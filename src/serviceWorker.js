@@ -10,7 +10,7 @@
 
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
 
 function registerValidSW(swUrl, config) {
   navigator.serviceWorker
