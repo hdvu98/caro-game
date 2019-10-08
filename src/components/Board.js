@@ -20,6 +20,7 @@ export default class Board extends React.Component {
     const { onClick } = this.props;
     return (
       <Square
+        key={i}
         showWinLine={showWinLine}
         value={squares[i]}
         onClick={() => onClick(i)}
@@ -33,7 +34,11 @@ export default class Board extends React.Component {
       const square = this.renderSquare(rowIndex * 20 + i);
       row.push(square);
     }
-    return <div className="board-row d-flex justify-content-center">{row}</div>;
+    return (
+      <div key={rowIndex} className="board-row d-flex justify-content-center">
+        {row}
+      </div>
+    );
   }
 
   renderBoard() {
