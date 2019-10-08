@@ -133,7 +133,7 @@ ol {
 .up {
   position: relative;
   content: '';
-  background-image: url('../src/img/sort.png');
+  background-image: url('../img/sort.png');
   background-repeat: no-repeat;
   background-size: 20px 20px;
   width: 20px;
@@ -142,7 +142,7 @@ ol {
 .down {
   content: '';
   position: relative;
-  background-image: url('../src/img/sort.png');
+  background-image: url('../img/sort.png');
   background-repeat: no-repeat;
   background-size: 20px 20px;
   width: 20px;
