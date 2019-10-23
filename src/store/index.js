@@ -11,7 +11,9 @@ const initialState = {
   xIsNext: true,
   winner: null,
   position: null,
-  isIncr: true
+  isIncr: true,
+  username:'',
+  password:'',
 };
 
 const store = createStore(reducer, initialState);
