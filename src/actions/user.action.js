@@ -46,7 +46,7 @@ export const login = user => {
         return fetch("https://game-caro-api.herokuapp.com/user/login", {
         method: "POST",
         headers: {
-          // 'Access-Control-Allow-Origin': 'http://localhost:3000',
+          'Access-Control-Allow-Origin': 'https://game-caro-refactor-code.herokuapp.com',
           // 'Access-Control-Allow-Credentials': 'true',
           'Accept': 'application/json',
           'Content-Type': 'application/json',
