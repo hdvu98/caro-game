@@ -43,7 +43,7 @@ export const register = user => {
   }
 export const login = user => {
     return (dispatch) => {
-        return fetch("http://localhost:3000/user/login", {
+        return fetch("https://game-caro-api.herokuapp.com/user/login", {
         method: "POST",
         headers: {
           // 'Access-Control-Allow-Origin': 'http://localhost:3000',
