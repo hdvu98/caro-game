@@ -3,9 +3,16 @@ import {REGISTER,
     LOGOUT,
     GET_INFO} from '../constant';
 
-const userReducers= (state, action) => {
+const initialState = {
+    user:{
+    
+    }
+    
+    };
+const userReducers= (state = initialState, action) => {
     switch (action.type) {
         case LOGIN:
+            console.log(action.payload);
             return {
             loggingIn: true,
             user: action.payload

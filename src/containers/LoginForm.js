@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
 import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Button, FormLabel, Form, FormControl, FormGroup } from 'react-bootstrap';
 import {login} from '../actions/user.action';
 
@@ -47,8 +48,10 @@ class LoginForm extends Component {
         )
     }
 }
-const mapDispatchToProps = dispatch => ({
-  callLogin: userInfo => dispatch(login(userInfo))
-})
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({
+        callLogin: login
+    },dispatch);
+}
 
 export default connect(null, mapDispatchToProps)(LoginForm);

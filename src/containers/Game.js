@@ -90,13 +90,14 @@ const Game = props => {
 };
 
 function mapStateToProps(state) {
+  const {game} = state;
   return {
-    history: state.history,
-    step: state.step,
-    xIsNext: state.xIsNext,
-    winner: state.winner,
-    position: state.position,
-    isIncr: state.isIncr
+    history: game.history,
+    step: game.step,
+    xIsNext: game.xIsNext,
+    winner: game.winner,
+    position: game.position,
+    isIncr: game.isIncr
   };
 }
 

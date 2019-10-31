@@ -1,4 +1,5 @@
-import config from 'config';
+import config from '../';
+import fetch from 'fetch';
 import { authHeader } from '../_helpers';
 
 export const userService = {

@@ -1,7 +1,21 @@
 import { RESTART, JUMP, SORT, HANDLE_CLICK } from '../constant';
 import calculateWinner from '../common/findWinner';
 
-const gameReducers = (state, action) => {
+const initialState = {
+  history: [
+    {
+      squares: Array(400).fill(null)
+    }
+  ],
+  step: 0,
+  xIsNext: true,
+  winner: null,
+  position: null,
+  isIncr: true,
+  username:'',
+  password:'',
+};
+const gameReducers = (state = initialState, action) => {
   switch (action.type) {
     case RESTART:
       return {
