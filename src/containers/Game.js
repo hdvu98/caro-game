@@ -15,7 +15,8 @@ const Game = props => {
     jumpToStep,
     handleClick,
     restartGame,
-    sortStep
+    sortStep,
+    user
   } = props;
   const curBoard = history[step];
   let status;
@@ -53,6 +54,7 @@ const Game = props => {
         </div>
         <div className="game-info col-12 col-md-4 justify-content-start">
           <div className="game-info-heading text-center">GAME INFO</div>
+          <div>{user?user.username:''}</div>
           <div>{status}</div>
           <div>Position: {position}</div>
           <div className="d-flex flex-row flex-nowrap justify-content-between align-items-center step-header">
@@ -91,13 +93,15 @@ const Game = props => {
 
 function mapStateToProps(state) {
   const {game} = state;
+  const {user} = state;
   return {
     history: game.history,
     step: game.step,
     xIsNext: game.xIsNext,
     winner: game.winner,
     position: game.position,
-    isIncr: game.isIncr
+    isIncr: game.isIncr,
+    user : user.user
   };
 }
 

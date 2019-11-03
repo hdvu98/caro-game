@@ -12,21 +12,20 @@ const initialState = {
 const userReducers= (state = initialState, action) => {
     switch (action.type) {
         case LOGIN:
-            console.log(action.payload);
             return {
-            loggingIn: true,
+            loggedIn: true,
             user: action.payload
             };
         case LOGOUT:
             return {};
         case GET_INFO:
             return {
-                loggingIn: true,
+                loggedIn: true,
                 user: action.payload
                 };
         case REGISTER:
             return {
-                loggingIn: true,
+                loggedIn: true,
                 user: action.payload
                 };
         default:

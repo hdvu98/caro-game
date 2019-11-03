@@ -79,18 +79,6 @@ class SignUpForm extends Component {
 
         return (
             <Form >
-                <FormGroup controlId="formHorizontalEmail">
-                    <FormLabel>Username </FormLabel>
-                    <FormControl type="username" name="username" onChange={this.handleChange} placeholder="Username" />
-                </FormGroup>
-                <FormGroup controlId="formHorizontalPassword">
-                    <FormLabel>Password </FormLabel>
-                    <FormControl type="password" name="password" onChange={this.handleChange} placeholder="Password" />
-                </FormGroup>
-                <FormGroup controlId="formHorizontalPassword2">
-                    <FormLabel>Confirm Password </FormLabel>
-                    <FormControl type="password" name="confirmPassword" onChange={this.handleChange} placeholder="Password" />
-                </FormGroup>
                 <FormGroup controlId="formHorizontalName">
                     <FormLabel>Full Name </FormLabel>
                     <FormControl type="text" name="full_name" onChange={this.handleChange} placeholder="Full Name" />

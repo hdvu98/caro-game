@@ -1,5 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {PrivateRoute} from './PrivateRoute';
+import GameContainer from '../containers/Game';
 
 export const renderComponent = (route, match, history) => {
   class RouteContent extends React.Component {
@@ -23,8 +26,9 @@ export const renderComponent = (route, match, history) => {
   return <RouteContent />;
 };
 
-export const renderRoutes = (routes) => {
-
+const RenderRoutes  = (props)=> {
+  const {routes} = props;
+  const {user} = props;
   return routes
     ? 
     <BrowserRouter>
@@ -43,7 +47,12 @@ export const renderRoutes = (routes) => {
             />
           )})
         }
+        <PrivateRoute path='/' user={user} component={GameContainer}/>
       </Switch>
       </BrowserRouter>
     : null;
 };
+const mapStateToProps = state => {
+  return({ user: state.user })
+};
+export default connect(mapStateToProps)(RenderRoutes);
