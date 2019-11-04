@@ -8,4 +8,6 @@ export const {
 REGISTER,
 LOGIN,
 LOGOUT,
-GET_INFO} = userConstants;
+GET_INFO,
+CHANGE_INFO,
+CHANGE_PASSWORD} = userConstants;

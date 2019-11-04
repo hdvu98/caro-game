@@ -3,6 +3,7 @@ import {BrowserRouter, Switch, Route } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {PrivateRoute} from './PrivateRoute';
 import GameContainer from '../containers/Game';
+import Dashboard from '../components/Dashboard';
 
 export const renderComponent = (route, match, history) => {
   class RouteContent extends React.Component {
@@ -47,7 +48,7 @@ const RenderRoutes  = (props)=> {
             />
           )})
         }
-        <PrivateRoute path='/' user={user} component={GameContainer}/>
+        <PrivateRoute path='/' user={user} component={Dashboard}/>
       </Switch>
       </BrowserRouter>
     : null;

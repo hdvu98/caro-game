@@ -1,12 +1,12 @@
 import React from 'react';
-import LoginForm from '../containers/LoginForm';
+import EditProfile from '../containers/EditProfile';
 
 export default function Login(){
     return (
         <div className="container">
             <div  id="form-ui">
-                <div className="form-name text-center">SIGN IN</div>
-                <LoginForm/>
+                <div className="form-name text-center">Profile</div>
+                <EditProfile/>
             </div>
         </div>
     );

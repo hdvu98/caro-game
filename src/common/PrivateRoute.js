@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+// eslint-disable-next-line import/prefer-default-export
 export const PrivateRoute = ({ component: Component, user, ...rest }) => {
     return(
     <Route

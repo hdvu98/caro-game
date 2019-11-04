@@ -3,10 +3,16 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import routes from '../route';
 import RenderRoutes from '../common/routes';
-import '../style/Game.css';
 import { getInfo } from '../actions/user.action';
+import MenuAppBar from '../components/MenuAppBar';
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      loading: true
+    }
+  }
 
   componentDidMount = () => {
     const {getProfile} = this.props;
@@ -14,8 +20,11 @@ class App extends React.Component {
   }
 
   render(){
+    const {loggedIn} = this.props;
+    const {loading} = this.state;
     return (
       <div className="App">
+        <MenuAppBar/>
       <div className="container-page">
         <RenderRoutes routes={routes}/>
       </div>
@@ -26,7 +35,8 @@ class App extends React.Component {
 const mapStateToProps=(state)=> {
   const {user} = state;
   return {
-    loggedIn  : user.loggedIn
+    loggedIn  : user.loggedIn,
+    user: user.user
   };
 }
 

@@ -50,6 +50,7 @@ class LoginForm extends Component {
     
     render() {
         const {from} = this.props.location || {from: {pathname: "/"}};
+        console.log(this.state);
         const {errorMessage} = this.props
         const {loggedIn} = this.props.user;
         const {pathname} = from;
@@ -59,48 +60,44 @@ class LoginForm extends Component {
          return <Redirect to={pathname} />
         }
         return (
-            <section  className="form d-flex align-items-center flex-column">
-            <form className="d-flex-flex-column align-items-center">
+            <form className="d-flex flex-column align-items-center d-block">
                 <div className="d-block">
-                <TextField type="username" name="username" onChange={this.handleChange} placeholder="Username" id="input-with-icon-grid" label="Username" />
+                <TextField className="field-width" type="username" name="username" onChange={this.handleChange} placeholder="Username" id="input-with-icon-grid" label="Username" />
                 </div>
-                <div className="d-block d-flex flex-row justify-content-start">
-                <FormControl >
+                <FormControl className="mt-10" >
                     <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
                     <Input
-                            name="password"
+                        name="password"
                         id="standard-adornment-password"
                         type={showPassword ? 'text' : 'password'}
                         onChange={this.handleChange}
-                    />
-                </FormControl>
-                    <div style={{marginTop: "5px"}}>
-                        <IconButton 
+                        className="field-width"
+                        endAdornment={
+                            <InputAdornment position="end">
+                              <IconButton 
                                     aria-label="toggle password visibility"
                                     onClick={this.handleClickShowPassword}
                                     onMouseDown={this.handleMouseDownPassword}
                                     >
                                     {showPassword ? <Visibility /> : <VisibilityOff />}
-                        </IconButton>
-                    </div>
-
-                </div>
-               
+                                </IconButton>
+                            </InputAdornment>
+                          }
+                    />
+                </FormControl>
                     {errorMessage &&
                     <p style={{color:'red'}}>{errorMessage}</p>
                     }
                     <Row >
-                        <button type="submit" className="w-100 btn btn-prinary"onClick={(event) => this.handleSubmit(event)}>Login</button>
+                        <button type="submit" className="my-btn form-btn"onClick={(event) => this.handleSubmit(event)}>Login</button>
                     </Row>
+                    <div className="sns-title">Don't have an account?<a href="/register" className="link">Sign Up</a></div>
+                    <div className="other">or Connect with Social Media</div>
+                    <div className="d-flex flex-column">
+                        <button type="button" className="my-btn fb-btn"><i className="fab fa-facebook-f"></i><span className="btn-content">Sign in With Facebook</span></button>
+                        <button type="button" className="my-btn google-btn"><i className="fab fa-google"></i><span className="btn-content">Sign in With Google</span></button>
+                    </div>
                 </form>
-                <div>Don't have an account?<a href="/register">Sign Up now</a></div>
-                <div>Or login  with</div>
-                <div className="d-flex flex-row justify-content-between">
-                    <div>Favebook</div>
-                    <div>Google</div>
-                </div>
-                
-            </section>
         )
     }
 }

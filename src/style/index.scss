@@ -1,0 +1,56 @@
+@import "./Game.scss";
+@import "./Form.scss";
+.my-btn{
+    font-weight: bold;
+    background-color: #1da2dc;
+    color: white;
+    padding: 1em 2em;  
+    margin: 1em 0; 
+    display:inline-block;
+    width: 20rem;
+    border: none;
+    &:hover{
+        background-color: #1b8bbb;
+        color: white;
+    }
+}
+.field-width{
+    width: 20rem; 
+}
+.MuiInput-underline::after{
+    border-bottom: 2px solid #1da2dc !important;
+}
+.MuiFormLabel-root{
+    &.Mui-focused{
+        color:#1da2dc !important;
+    }
+}
+.MuiInput-underline:hover:not(.Mui-disabled):before {
+border-bottom: 2px solid #1da2dc;
+}
+.mt-10{
+    margin-top: 10px !important;
+}
+.mb-10{
+    margin-bottom: 10px !important;
+}
+.mt-15{
+    margin-top: 15px !important;
+}
+.mb-15{
+    margin-bottom: 15px !important;
+}
+.MuiRadio-colorPrimary.Mui-checked,.MuiButton-textPrimary{
+    color: #1da2dc !important;
+}
+.MuiPickersToolbar-toolbar,.MuiPickersDay-current{
+    background-color: #1da2dc !important;
+}
+.reset-link-style{
+    color: rgba(0, 0, 0, 0.87) ;
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.87) ;
+    }
+}

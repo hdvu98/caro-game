@@ -1,0 +1,52 @@
+#form-ui{
+    padding: 2em 2em;
+    background-color: white;
+    .form-name{
+        position: relative;
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 1.5em;
+    }
+    .sns-title{
+        padding: 1em 0;
+        .link{
+            padding-left: 10px;
+            color: #1da2dc;
+            &:hover{
+                color: #1da2dc;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        }
+    }
+    .other{
+        padding: 0 0 1em 0;
+        color: gray;
+        font-size: 10px;
+    }
+    .fb-btn{
+        margin: 0.5em 0;
+        font-weight: normal;
+        background-color:#3b5998 ;
+        text-align: left;
+        &:hover{
+            background-color:#30487c ;
+        }
+    }
+    .google-btn{
+        margin:0.5em 0;
+        font-weight: normal;
+        background-color: #ea4335;
+        text-align: left;
+        &:hover{
+            background-color: #c43a2d;
+        }
+    }
+    .form-btn{
+        margin: 2em 0;
+    }
+    .btn-content{
+        padding-left: 10px;
+    }
+
+}

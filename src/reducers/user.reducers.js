@@ -1,7 +1,9 @@
 import {REGISTER,
     LOGIN,
     LOGOUT,
-    GET_INFO} from '../constant';
+    GET_INFO,
+    CHANGE_INFO,
+    CHANGE_PASSWORD} from '../constant';
 
 const initialState = {
     user:{
@@ -17,7 +19,10 @@ const userReducers= (state = initialState, action) => {
             user: action.payload
             };
         case LOGOUT:
-            return {};
+            return {
+                loggedIn:false,
+                user: undefined
+            };
         case GET_INFO:
             return {
                 loggedIn: true,
@@ -27,7 +32,13 @@ const userReducers= (state = initialState, action) => {
             return {
                 loggedIn: true,
                 user: action.payload
-                };
+                };     
+        case CHANGE_INFO:
+            return{
+                user: action.payload
+            }
+        case CHANGE_PASSWORD:
+            return state;
         default:
             return state
         }
