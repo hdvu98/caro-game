@@ -21,25 +21,34 @@ const Game = props => {
   const curBoard = history[step];
   let status;
   if (winner) {
-    status = `Winner:  ${winner.pos}`;
+    const {pos} = winner;
+    if(pos ==='X'){
+      status = `YOU WIN!`;
+    }
+    else{
+      status = `YOU LOOSE!`;
+    }
   } else {
     status = `Next player: ${xIsNext ? 'X' : 'O'}`;
   }
 
   const moves = history.map((_key, move) => {
-    const desc = move ? `Step  ${move}` : `Start`;
-    const liKey = move;
-    return (
-      <li key={liKey}>
-        <button
-          type="button"
-          className={`${step === move ? 'step active' : 'step'} `}
-          onClick={() => jumpToStep(move)}
-        >
-          {desc}
-        </button>
-      </li>
-    );
+    if(move % 2===0){
+      const desc = move ? `Step  ${move/2}` : `Start`;
+      const liKey = move;
+      return (
+        <li key={liKey}>
+          <button
+            type="button"
+            className={`${step === move ? 'step active' : 'step'} `}
+            onClick={() => jumpToStep(move)}
+          >
+            {desc}
+          </button>
+        </li>
+      );
+    }
+
   });
   return (
     <div className="container">
@@ -56,7 +65,7 @@ const Game = props => {
           <div className="game-info-heading text-center">GAME INFO</div>
           <div>{user?user.username:''}</div>
           <div>{status}</div>
-          <div>Position: {position}</div>
+          <div>Lasted position: {position}</div>
           <div className="d-flex flex-row flex-nowrap justify-content-between align-items-center step-header">
             <div className="step-header-title">History</div>
             <button
@@ -72,7 +81,7 @@ const Game = props => {
             <ol
               className={`d-flex ${
                 isIncr ? 'flex-column' : 'flex-column-reverse'
-              } `}
+              } ${winner? 'disable-step':''} `} 
             >
               {moves}
             </ol>
@@ -108,10 +117,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      handleClick: actions.handleClick,
+      handleClick: actions.botPlay,
       jumpToStep: actions.jumpToStep,
       sortStep: actions.sortStep,
-      restartGame: actions.restartGame
+      restartGame: actions.restartGame,
     },
     dispatch
   );

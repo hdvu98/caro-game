@@ -5,6 +5,7 @@ const userConstants = {
     LOGOUT: 'LOGOUT',
     CHANGE_INFO : 'CHANGE_INFO',
     CHANGE_PASSWORD : 'CHANGE_PASSWORD',
+    UPLOAD_AVATAR: 'UPLOAD_AVATAR'
 };
 
 export default userConstants;

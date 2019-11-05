@@ -54,3 +54,27 @@ border-bottom: 2px solid #1da2dc;
         color: rgba(0, 0, 0, 0.87) ;
     }
 }
+.banner{
+    background: #5BB8F7;
+    color: #FFF;
+    padding: 20px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#5BB8F7), to(#3794D1));
+    background-image: linear-gradient(-180deg, #5BB8F7 0%, #3794D1 100%);
+    .game-info-heading{
+        margin-bottom: 2rem;
+        &::after{
+            display: none;;
+        }
+    }
+    .profile-avatar{
+        width: 150px !important;
+        height: 150px !important;
+    }
+}
+.card-title{
+    font-weight: bold;
+    font-size: 1.2em;
+    .card-title-players{
+        color: #3794D1;
+    }
+}

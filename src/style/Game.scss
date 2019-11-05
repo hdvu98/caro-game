@@ -161,3 +161,7 @@ ol {
   background: white;
   padding: 3rem;
 }
+.disable-step{
+  pointer-events: none;
+  filter: brightness(50%);
+}

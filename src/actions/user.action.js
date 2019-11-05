@@ -4,8 +4,13 @@ import {REGISTER,
     LOGIN,
     LOGOUT,
     GET_INFO,
-    LOADING} from '../constant';
+    LOADING,
+    UPLOAD_AVATAR} from '../constant';
     
+const uploadAvatarUser = (user) =>({
+  type:UPLOAD_AVATAR,
+  payload:user
+})
 const loginUser = (userObj) => ({
     type: LOGIN,
     payload: userObj
@@ -147,4 +152,30 @@ export const logOut = () =>{
     localStorage.removeItem('token');
   }
   return logOutUser;
+}
+
+export const uploadAvatar=user=>{
+  return (dispatch) =>{
+    const token = localStorage.getItem('token');
+    return fetch("https://game-caro-api.herokuapp.com/user/upload-avatar", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(user)
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.message) {
+          console.log(data.message)
+        } 
+        if (data.user) {
+              dispatch(uploadAvatarUser(data.user))
+              }
+      }).catch((error) => {
+            console.log(error);
+        })
+  }
 }

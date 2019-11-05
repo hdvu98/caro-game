@@ -2,11 +2,19 @@ export default function calculateWinner(board, curPos) {
   let cursor = curPos;
   let count = 1;
   let winPos = [];
-
+  let isLeftBlocked = false;
+  let isTopBlocked = false;
+  let isTopLeftBlocked = false;
+  let isTopRightBlocked =false;
   //  row
 
   while (cursor >= 0 && board[cursor] === board[cursor - 1]) {
     cursor -= 1;
+  }
+  if(cursor >= 1){
+    if(board[cursor-1] !== null){
+      isLeftBlocked = false;
+    }
   }
   while (board[cursor] === board[cursor + 1] && cursor <= 400) {
     winPos.push(cursor);
@@ -18,7 +26,7 @@ export default function calculateWinner(board, curPos) {
     return { pos: board[curPos], winPos };
   }
   if (count === 5) {
-    if (board[cursor + 1] === null) {
+    if (board[cursor + 1] === null || (!isLeftBlocked )) {
       winPos.push(cursor);
       return {
         pos: board[curPos],
@@ -33,6 +41,11 @@ export default function calculateWinner(board, curPos) {
   while (cursor >= 0 && board[cursor] === board[cursor - 20]) {
     cursor -= 20;
   }
+  if(cursor-20>=0){
+    if(board[cursor-20]!==  null){
+      isTopBlocked = true;
+    }
+  }
   while (board[cursor] === board[cursor + 20] && cursor <= 400) {
     winPos.push(cursor);
     cursor += 20;
@@ -43,7 +56,7 @@ export default function calculateWinner(board, curPos) {
     return { pos: board[curPos], winPos };
   }
   if (count === 5) {
-    if (board[cursor + 20] === null) {
+    if (board[cursor + 20] === null || (!isTopBlocked )) {
       winPos.push(cursor);
       return { pos: board[curPos], winPos };
     }
@@ -55,6 +68,11 @@ export default function calculateWinner(board, curPos) {
   while (cursor >= 0 && board[cursor] === board[cursor - 21]) {
     cursor -= 21;
   }
+  if(cursor - 21 >=0){
+    if(board[cursor - 21] !== null){
+      isTopLeftBlocked = true;
+    }
+  }
   while (board[cursor] === board[cursor + 21] && cursor <= 400) {
     winPos.push(cursor);
     cursor += 21;
@@ -65,7 +83,7 @@ export default function calculateWinner(board, curPos) {
     return { pos: board[curPos], winPos };
   }
   if (count === 5) {
-    if (board[cursor + 21] === null) {
+    if (board[cursor + 21] === null || (!isTopLeftBlocked)) {
       winPos.push(cursor);
       return { pos: board[curPos], winPos };
     }
@@ -77,6 +95,11 @@ export default function calculateWinner(board, curPos) {
   while (cursor >= 0 && board[cursor] === board[cursor - 19]) {
     cursor -= 19;
   }
+  if(cursor - 19 >=0){
+    if(board[cursor - 19]!== null){
+      isTopRightBlocked = true
+    }
+  }
   while (board[cursor] === board[cursor + 19] && cursor <= 400) {
     winPos.push(cursor);
     cursor += 19;
@@ -87,7 +110,7 @@ export default function calculateWinner(board, curPos) {
     return { pos: board[curPos], winPos };
   }
   if (count === 5) {
-    if (board[cursor + 19] === null) {
+    if (board[cursor + 19] === null || (!isTopRightBlocked )) {
       winPos.push(cursor);
       return { pos: board[curPos], winPos };
     }

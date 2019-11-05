@@ -3,8 +3,32 @@ import SignUp from "./components/SignUp";
 import UpdateProfile from './components/UpdateProfile';
 import ResetPassword from './components/ResetPassword';
 import LogOutPage from './containers/LogOut';
+import UploadAvatar from './containers/UploadAvatar';
+import Game from './containers/Game';
   
   const routes = [
+    {
+      path: "/game-one-player",
+      exact: true,
+      props: {
+        title:
+          "Caro Vietnam 1 player",
+        description:
+          "Game Caro Vietnam"
+      },
+      component: Game
+    },
+    {
+      path: "/upload-avatar",
+      exact: true,
+      props: {
+        title:
+          "Change Avatar",
+        description:
+          "Game Caro Vietnam"
+      },
+      component: UploadAvatar
+    },
     {
       path: "/logout",
       exact: true,

@@ -61,17 +61,18 @@ class EditProfile extends Component {
       };
 
     render() {
-        const {errorMessage} = this.state
+        const {errorMessage} = this.state;
+        const {gender,full_name} = this.state;
 
         return (
             <form className="d-flex flex-column align-items-center d-block">
                 <div className="d-block">
-                <TextField className="field-width" type="text" name="full_name" value={this.state.full_name} onChange={this.handleChange} placeholder="Full Name" id="input-with-icon-grid" label="Full name" />
+                <TextField className="field-width" type="text" name="full_name" value={full_name} onChange={this.handleChange} placeholder="Full Name" id="input-with-icon-grid" label="Full name" />
                 </div>
                 
                 <FormControl className="field-width mt-15"  controlId="formHorizontalGender">
                     <FormLabel component="legend">Gender</FormLabel>
-                    <RadioGroup  aria-label="gender" name="gender" value={this.state.gender} onChange={this.handleChange}
+                    <RadioGroup  aria-label="gender" name="gender" value={gender} onChange={this.handleChange}
                     className ="d-flex flex-row justify-content-start" label="Gender"
                     >
                         <FormControlLabel

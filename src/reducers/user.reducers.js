@@ -4,7 +4,8 @@ import {REGISTER,
     GET_INFO,
     CHANGE_INFO,
     CHANGE_PASSWORD,
-    LOADING} from '../constant';
+    LOADING,
+    UPLOAD_AVATAR} from '../constant';
 
 const initialState = {
     user:{
@@ -14,6 +15,12 @@ const initialState = {
     };
 const userReducers= (state = initialState, action) => {
     switch (action.type) {
+        case UPLOAD_AVATAR:
+            return{
+                user: action.payload,
+                loading: false,
+                loggedIn: true,
+            }
         case LOADING:
             return{loading: true}
         case LOGIN:
