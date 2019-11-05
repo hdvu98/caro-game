@@ -5,8 +5,20 @@ import ResetPassword from './components/ResetPassword';
 import LogOutPage from './containers/LogOut';
 import UploadAvatar from './containers/UploadAvatar';
 import Game from './containers/Game';
+import GameOnlineContainer from './containers/GameOnline';
   
   const routes = [
+    {
+      path: "/game-two-players",
+      exact: true,
+      props: {
+        title:
+          "Caro Vietnam 2 players",
+        description:
+          "Game Caro Vietnam"
+      },
+      component: GameOnlineContainer
+    },
     {
       path: "/game-one-player",
       exact: true,

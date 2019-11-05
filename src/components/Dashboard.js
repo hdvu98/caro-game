@@ -35,7 +35,7 @@ const Dashboard =(props)=> {
                                     <div className="card-title">Caro  Vietnam |<spam className="card-title-players">2 player</spam> </div>
                                 </CardContent>
                                 <CardActions>
-                                    <Button color="primary" variant="contained" size="small"><SportsEsportsIcon/>Play now</Button>
+                                    <Button color="primary" variant="contained" size="small" href="/game-two-players"><SportsEsportsIcon/>Play now</Button>
                                 </CardActions>
                             </Card>
                         </div>
