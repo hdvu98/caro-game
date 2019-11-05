@@ -1,5 +1,6 @@
 import userConstants from './user.constant';
 
+export const LOADING = 'LOADING';
 export const RESTART = 'RESTART';
 export const JUMP = 'JUMP';
 export const SORT = 'SORT';

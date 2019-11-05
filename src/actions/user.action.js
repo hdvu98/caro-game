@@ -3,7 +3,8 @@
 import {REGISTER,
     LOGIN,
     LOGOUT,
-    GET_INFO} from '../constant';
+    GET_INFO,
+    LOADING} from '../constant';
     
 const loginUser = (userObj) => ({
     type: LOGIN,
@@ -115,6 +116,7 @@ export const changePassword = user =>{
 }
 
 export const changeProfile = user =>{
+  dispatch({type: LOADING});
   return (dispatch) => {
     const token = localStorage.getItem('token');
       return fetch("https://game-caro-api.herokuapp.com/user/editProfile", {

@@ -50,8 +50,8 @@ function MenuAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <HomeRoundedIcon />
+          <IconButton  href="/" edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <HomeRoundedIcon/>
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             {full_name}

@@ -7,12 +7,6 @@ import { getInfo } from '../actions/user.action';
 import MenuAppBar from '../components/MenuAppBar';
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      loading: true
-    }
-  }
 
   componentDidMount = () => {
     const {getProfile} = this.props;
@@ -20,9 +14,8 @@ class App extends React.Component {
   }
 
   render(){
-    const {loggedIn} = this.props;
-    const {loading} = this.state;
-    return (
+    const {loading} = this.props;
+    return loading?<div>loading</div>:(
       <div className="App">
         <MenuAppBar/>
       <div className="container-page">
@@ -36,7 +29,8 @@ const mapStateToProps=(state)=> {
   const {user} = state;
   return {
     loggedIn  : user.loggedIn,
-    user: user.user
+    user: user.user,
+    loading: user.loading
   };
 }
 
