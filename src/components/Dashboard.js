@@ -32,7 +32,7 @@ const Dashboard =(props)=> {
                         <div className="col-12 col-sm-6">
                         <Card >
                                 <CardContent>
-                                    <div className="card-title">Caro  Vietnam |<spam className="card-title-players">2 player</spam> </div>
+                                    <div className="card-title">Caro  Vietnam |<span className="card-title-players">2 player</span> </div>
                                 </CardContent>
                                 <CardActions>
                                     <Button color="primary" variant="contained" size="small" href="/game-two-players"><SportsEsportsIcon/>Play now</Button>

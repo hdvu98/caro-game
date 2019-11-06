@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react'; 
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -50,11 +51,11 @@ class LoginForm extends Component {
     
     render() {
         const {from} = this.props.location || {from: {pathname: "/"}};
-        console.log(this.state);
         const {errorMessage} = this.props
         const {loggedIn} = this.props.user;
         const {pathname} = from;
         const {showPassword} = this.state;
+        const {loginMsg} = this.props;
         if(loggedIn)
         {
          return <Redirect to={pathname} />
@@ -88,6 +89,7 @@ class LoginForm extends Component {
                     {errorMessage &&
                     <p style={{color:'red'}}>{errorMessage}</p>
                     }
+                    {loginMsg && <div className="alert  alert-primary" role="alert">{loginMsg}</div>}
                     <Row >
                         <button type="submit" className="my-btn form-btn"onClick={(event) => this.handleSubmit(event)}>Login</button>
                     </Row>
@@ -102,7 +104,8 @@ class LoginForm extends Component {
     }
 }
 const mapStateToProps = state =>({
-    user: state.user
+    user: state.user,
+    loginMsg: state.user.loginMsg
 })
 const mapDispatchToProps = dispatch => {
     return bindActionCreators({

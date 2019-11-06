@@ -1,11 +1,19 @@
 /* eslint-disable no-undef */
-
-import {REGISTER,
-    LOGIN,
-    LOGOUT,
-    GET_INFO,
-    LOADING,
-    UPLOAD_AVATAR} from '../constant';
+import { 
+  LOADING,
+  LOGIN,
+  LOGIN_ERROR,
+  GET_INFO,
+  REGISTER,
+  REGISTER_SUCCESS,
+  LOGOUT,
+  CHANGE_INFO ,
+  CHANGE_INFO_SUCCESS ,
+  CHANGE_PASSWORD_SUCCESS ,
+  UPLOAD_AVATAR,
+  UPLOAD_AVATAR_SUCCES,
+  FAILED_GET_INFO,
+} from '../constant';
     
 const uploadAvatarUser = (user) =>({
   type:UPLOAD_AVATAR,
@@ -15,6 +23,7 @@ const loginUser = (userObj) => ({
     type: LOGIN,
     payload: userObj
 })
+
 const registerUser = userObj =>({
     type: REGISTER,
     payload: userObj
@@ -25,6 +34,9 @@ const logOutUser =()=>({
 const getInfoUser = (userObj) =>({
     type:GET_INFO,
     payload: userObj
+})
+const failedToGetInfo = ()=>({
+  type: FAILED_GET_INFO
 })
 export const register = user => {
     return dispatch => {
@@ -39,7 +51,7 @@ export const register = user => {
         .then(resp => resp.json())
         .then(data => {
           if (data.message) {
-              console.log(data.message);
+            dispatch(()=>({type: REGISTER_SUCCESS, payload: data.message}));
           } 
           else{
             dispatch(registerUser(data))
@@ -60,7 +72,7 @@ export const login = user => {
         .then(resp => resp.json())
         .then(data => {
             if (data.message) {
-                console.log(data.message);
+                dispatch(()=>({type: LOGIN_ERROR, payload: data.message}));
             } 
             if (data.token) {
             localStorage.setItem("token", data.token)
@@ -71,9 +83,10 @@ export const login = user => {
       });
     }
     }
-export const getInfo = () => {
+export const getInfo =  () => {
     return (dispatch) => {
-      const token = localStorage.getItem('token');
+      dispatch({type: LOADING})
+      const token =  localStorage.getItem('token');
         return fetch("https://game-caro-api.herokuapp.com/me", {
           method: "GET",
           headers: {
@@ -82,13 +95,18 @@ export const getInfo = () => {
             'Authorization': `Bearer ${token}`
           }
         })
-          .then(resp => resp.json())
+          .then(resp => {
+            if(resp.status !== 401) return resp.json()
+            return {message: "Please login!"}
+          }
+            )
           .then(data => {
-            if (data.message) {
               // localStorage.removeItem("token")
-            } else {
-              dispatch(getInfoUser(data.user))
-            }
+              if(data.user)
+               {
+                  return dispatch(getInfoUser(data.user))
+               }
+                return dispatch(failedToGetInfo());
           })
       }
   }
@@ -106,10 +124,9 @@ export const changePassword = user =>{
       return resp.json()})
     .then(data => {
         if (data.message) {
-            console.log(data.message);
+            dispatch({type: CHANGE_PASSWORD_SUCCESS, payload: data.message})
         } 
         if (data.token) {
-          console.log(token);
           localStorage.removeItem("token");
           localStorage.setItem("token", data.token)
           dispatch(loginUser(data.user))
@@ -121,8 +138,8 @@ export const changePassword = user =>{
 }
 
 export const changeProfile = user =>{
-  dispatch({type: LOADING});
   return (dispatch) => {
+    dispatch({type: LOADING})
     const token = localStorage.getItem('token');
       return fetch("https://game-caro-api.herokuapp.com/user/editProfile", {
         method: "POST",
@@ -136,11 +153,9 @@ export const changeProfile = user =>{
         .then(resp => resp.json())
         .then(data => {
           if (data.message) {
-            console.log(data.message)
+            dispatch(()=>({type: CHANGE_INFO_SUCCESS, payload: data.message}));
           } 
-          if (data.user) {
-                dispatch(loginUser(data.user))
-                }
+          dispatch(loginUser(data.user))
         }).catch((error) => {
               console.log(error);
           })
@@ -151,7 +166,7 @@ export const logOut = () =>{
   if(localStorage.getItem('token')){
     localStorage.removeItem('token');
   }
-  return logOutUser;
+  return logOutUser();
 }
 
 export const uploadAvatar=user=>{
@@ -169,7 +184,7 @@ export const uploadAvatar=user=>{
       .then(resp => resp.json())
       .then(data => {
         if (data.message) {
-          console.log(data.message)
+          dispatch(()=>({type: UPLOAD_AVATAR_SUCCES, payload: data.message}));
         } 
         if (data.user) {
               dispatch(uploadAvatarUser(data.user))

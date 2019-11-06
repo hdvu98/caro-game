@@ -270,6 +270,11 @@ ol {
   border-bottom: 2px solid #1da2dc;
 }
 
+.spiner-cover {
+  width: 100vw;
+  height: 100vh;
+}
+
 .mt-10 {
   margin-top: 10px !important;
 }
